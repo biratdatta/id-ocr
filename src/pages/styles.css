@@ -1,0 +1,72 @@
+.container {
+  max-width: 100%;
+  padding: 16px;
+  background-color: #ffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uploadedImage {
+  max-width: 100%;
+  max-height: 300px;
+  margin-top: 16px;
+}
+
+.fileInputLabelContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.fileInputLabel {
+  font-size: 12px;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.result {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.submitButton {
+  margin-top: 16px;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.inputLabelHover:hover {
+  color: #1976d2;
+  cursor: pointer;
+}
+
+.goBackBtn {
+  padding: 12px 24px;
+  margin-top: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #f44336;
+  color: #fff;
+  cursor: pointer;
+}
+
+.submitFeedbackButton {
+  padding: 12px 24px;
+  margin-top: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #1976d2;
+  color: #fff;
+  cursor: pointer;
+}
