@@ -280,7 +280,7 @@ export default function IndexPage() {
           <Typography variant="h4">Data Extraction</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {/* Empty Form */}
+          
           <div>
             <Typography variant="body1">Empty Form 2</Typography>
           </div>
