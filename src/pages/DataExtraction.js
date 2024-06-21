@@ -8,7 +8,12 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Box
+  Box,
+    Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextareaAutosize
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -70,6 +75,7 @@ export default function DataValidation() {
       formData.append('fuzz_match', false);
       formData.append('match_case', false);
       formData.append('distance_cutoff', 1);
+      formData.append('ner', true);
 
       fetch(`https://ai-tools.dev.bhasai.samagra.io/ocr/pytesseract_word_check/`, {
         method: 'POST',
@@ -117,7 +123,7 @@ export default function DataValidation() {
   };
 
   const handleCommentSubmit = () => {
-    // Here you can submit the comment
+   
     console.log('Comment:', comment);
     handleModalClose();
   };
@@ -125,7 +131,7 @@ export default function DataValidation() {
   return (
     <div className="form">
       <Grid container alignItems="center" spacing={2}>
-        {/* Document Type */}
+        
         <Grid item>
           <Typography variant="h6">Document Type:</Typography>
         </Grid>
@@ -148,7 +154,7 @@ export default function DataValidation() {
         </Grid>
       </Grid>
       <Grid container alignItems="center" spacing={8.5}>
-        {/* Keywords */}
+    
         <Grid item>
           <Typography variant="h6">Keywords:</Typography>
         </Grid>
@@ -201,7 +207,7 @@ export default function DataValidation() {
           className="submitButton"
           sx={{ fontSize: '20px', padding: '12px 24px', width: '100%' }}
         >
-          Submit for Validation
+          Submit for Extraction
         </Button>
       ) : null}
       {loading && <Typography>Loading...</Typography>}
@@ -221,10 +227,39 @@ export default function DataValidation() {
               </Typography>
             </Grid>
           </Grid>
-          <div className="buttonContainer" style={{ display: 'flex', justifyContent: 'center' }}>
+          
+          {jsonData.ner && (
+            <div>
+              <Typography variant="h6">NER Results:</Typography>
+              <p>Cheque Amount: {jsonData.ner.cheque_amount}</p>
+              <p>Cheque Number: {jsonData.ner.cheque_number}</p>
+              <p>Cheque Return Date: {jsonData.ner.cheque_return_date}</p>
+            </div>
+          )}
+            <div className="buttonContainer" style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{ display: 'flex', gap: '10px' }}>
               <Button variant="contained" color="secondary" onClick={handleGoBack} className="goBackBtn">Reset</Button>
               <Button variant="contained" onClick={handleFeedbackSubmit} className="submitFeedbackButton">Report Issue</Button>
+                <Dialog open ={openModal} onClose={handleModalClose}>
+                <DialogTitle>Feedback</DialogTitle>
+            <DialogContent>
+              <TextareaAutosize
+                minRows={4}
+                placeholder="Enter your comments here"
+                value={comment}
+                onChange={handleCommentChange}
+                style={{ width: '100%' }}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleModalClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleCommentSubmit} color="primary">
+                Submit
+              </Button>
+            </DialogActions>
+              </Dialog>
             </div>
           </div>
         </div>

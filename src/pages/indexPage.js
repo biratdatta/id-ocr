@@ -11,7 +11,7 @@ import './styles.css';
 export default function IndexPage() {
   const handleAccordionChange = (panel) => (event, isExpanded) => {
     if (!isExpanded) {
-      // Reset the state when accordion is closed
+    
     }
   };
 
