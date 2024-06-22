@@ -77,7 +77,7 @@ export default function DataValidation() {
       formData.append('distance_cutoff', 1);
       formData.append('ner', true);
 
-      fetch(`https://ai-tools.dev.bhasai.samagra.io/ocr/pytesseract_word_check/`, {
+      fetch(`${NEXT_ENV_FILE}/ocr/pytesseract_word_check/`, {
         method: 'POST',
         body: formData,
       })
